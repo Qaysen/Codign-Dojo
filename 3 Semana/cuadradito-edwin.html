@@ -1,0 +1,62 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Mover un cuadradito</title>
+	<style type="text/css">
+		#cuadradito {
+			width: 10px;
+			height: 10px;
+			position: relative;
+			left: 100px;
+			top: 100px;
+			background: red;
+		}
+	</style>
+	<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript">
+	    var izquierda = 100;
+	    var arriba = 100;
+		$(document).on("ready", evento);
+		function evento()
+		{
+			$(document).on("keydown", movimiento);
+		}
+		function movimiento(tecla)
+		{
+			if (tecla.keyCode == 39) {
+				izquierda = izquierda + 10;
+				css = {
+					"left" : izquierda.toString() + "px"
+				}
+				$("#cuadradito").css(css);   
+		    }
+			else if (tecla.keyCode == 40) {
+				arriba = arriba + 10;
+				css = {
+					"top" : arriba.toString() + "px"
+				}
+				$("#cuadradito").css(css);   
+		    }
+			else if (tecla.keyCode == 37) {
+				izquierda = izquierda - 10;
+				css = {
+					"left" : izquierda.toString() + "px"
+				}
+				$("#cuadradito").css(css);   
+		    }
+			else if (tecla.keyCode == 38) {
+				arriba = arriba - 10;
+				css = {
+					"top" : arriba.toString() + "px"
+				}
+				$("#cuadradito").css(css);   
+		    }
+		}
+	</script>
+</head>
+<body>
+	<div id="cuadradito">
+	</div>
+</body>
+</html>

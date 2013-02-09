@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en-US">
+<head>
+	<meta charset="UTF-8">
+	<title>Numero Romanos en JS</title>
+	<script src="http://code.jquery.com/jquery-1.9.0.min.js"></script>
+	<script type="text/javascript">
+
+		$(document).on("ready", comenzar);
+		function comenzar() 
+		{
+			numerosRomanos = [];
+			numerosRomanos[1] = 'I';
+			numerosRomanos[5] = 'V';
+			numerosRomanos[10] = 'X';
+
+			numeros = ['I','V','X']
+
+			function buscar(y)
+			{
+				for (var i = 1; i < numerosRomanos.length; i++)
+				{
+					if (numeros[y] == numerosRomanos[i])
+					{
+						z = i;
+					}
+				}
+				return z;
+			}
+
+			m = 0;
+			for (var i = 1; i <= 20; i++)
+			{
+				j = i;
+				k = '';
+				while(j > 0)
+				{
+					k += numerosRomanos[1];
+					j--;
+				}
+				if (!numerosRomanos[i]) 
+				{
+					numerosRomanos[i] = numeros[m] + numerosRomanos[i-buscar(m)];
+				}
+				else
+				{
+					if (i>1)
+					{
+						numerosRomanos[i-1] = numerosRomanos[1] + numerosRomanos[i];
+						m++;
+					}
+				}
+			}
+			for (var i = 1; i <= 20; i++)
+			{
+				$("#numerosRomanos").append('<li>' + i + ' es en numeros romanos ' + numerosRomanos[i] + '</li>');
+			}
+		}
+	</script>
+</head>
+<body>
+	<div id="numerosRomanos">
+		
+	</div>
+</body>
+</html>
